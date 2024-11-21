@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --golden: linear-gradient(
+    74.08deg,
+    rgba(148, 120, 62, 1) -6.8%,
+    rgba(243, 237, 166, 1) 16.76%,
+    rgba(248, 250, 229, 1) 30.5%,
+    rgba(255, 226, 190, 1) 49.6%,
+    rgba(213, 190, 136, 1) 78.56%,
+    rgba(248, 250, 229, 1) 89.01%,
+    rgba(213, 190, 136, 1) 100.43%
+  );
+  --blue: linear-gradient(
+    134.86deg,
+    #abfffd 2.64%,
+    #4599db 102.4%,
+    #aadaff 102.4%
+  );
+}
+
+body {
+  box-sizing: border-box;
+  color: #fff;
+  min-width: 100vw;
+  min-height: 100vh;
+  background: #1e1e1e;
+  overflow-x: hidden;
+}
+
+p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.main-site {
+  margin: auto;
+  max-width: 440px;
+  min-height: 100vh;
+  padding: 15px;
+}
+
+main {
+  margin-top: 3em;
+}
+
+.bg-base {
+  background: radial-gradient(
+    circle at 100% 0%,
+    rgba(31, 66, 71, 1) 0%,
+    rgba(13, 29, 35, 1) 56.18%,
+    rgba(9, 20, 26, 1) 100%
+  );
+}
+
+.btn-gradient {
+  background: linear-gradient(108.32deg, #62cdcb 24.88%, #4599db 78.49%);
+}
+
+.link-golden {
+  background: var(--golden);
+}
+
+.link-blue {
+  background: var(--blue);
+}
+
+.link-golden,
+.link-blue {
+  position: relative;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-color: transparent;
+  background-clip: text;
+  text-decoration: underline;
+}
+
+.link-golden::after,
+.link-blue::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.link-golden:hover {
+  opacity: 0.7;
+}
+
+.link-golden-underline::after {
+  height: 1.2px;
+}
+
+input {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+button:disabled {
+  opacity: 0.3;
+}
+
+button:hover:not(:disabled) {
+  opacity: 0.7;
+}
+
+option {
+  background-color: #1e1e1e;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+select option:disabled {
+  color: gray;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(55%) sepia(10%) saturate(200%) hue-rotate(180deg);
+  cursor: pointer;
+}
+.link-blue {
+  color: var(--blue);
+}
+.tag-input-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  gap: 5px;
+}
+.tag {
+  display: flex;
+  align-items: center;
+  background-color: #e0e0e0;
+  border-radius: 3px;
+  padding: 5px 8px;
+  font-size: 14px;
+}
+.tag span {
+  margin-right: 5px;
+}
+.tag button {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 16px;
+  cursor: pointer;
+}
+.tag button:hover {
+  color: #555;
+}
+.tag-input-container input {
+  border: none;
+  flex-grow: 1;
+  font-size: 14px;
+  outline: none;
+}
