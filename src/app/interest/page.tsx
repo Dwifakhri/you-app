@@ -45,7 +45,7 @@ export default function Interest() {
       setUser(res.data);
       router.push("/");
     } catch (error: any) {
-      console.log(error.message);
+      alert(error.message);
       setLoading(false);
     }
   };

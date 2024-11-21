@@ -106,7 +106,7 @@ export default function Home() {
           ) : (
             <div className="flex flex-wrap">
               {user?.interests?.map((item: string, i: number) => (
-                <p key={i} className="bg-white-6 rounded-full px-3 py-1">
+                <p key={i} className="bg-white-6 rounded-full px-4 py-1">
                   {item}
                 </p>
               ))}

@@ -4,7 +4,7 @@ import BackRoute from "@/components/BackRoute";
 import Header from "@/components/Header";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { generateZodiac } from "@/utils/generateZodiac";
 import customFetch from "@/utils/useFetch";
 import { useRouter } from "next/navigation";
@@ -46,6 +46,19 @@ export default function Edit() {
       setWeight(`${weight} kg`);
     } else {
       setWeight("");
+    }
+  };
+
+  const changeColor = (id: string, isThere: boolean) => {
+    if (typeof document !== "undefined") {
+      const ids = document.getElementById(id);
+      if (ids && isThere) {
+        ids.classList.remove("text-white-40");
+      } else if (ids) {
+        ids.classList.add("text-white-40");
+      }
+    } else {
+      console.warn("document is not available.");
     }
   };
 
@@ -91,6 +104,27 @@ export default function Edit() {
     }
   }, [user]);
 
+  if (gender) {
+    changeColor("gender", true);
+  } else {
+    changeColor("gender", false);
+  }
+  if (birthday) {
+    changeColor("birthday", true);
+  } else {
+    changeColor("birthday", false);
+  }
+  if (horoscope) {
+    changeColor("horoscope", true);
+  } else {
+    changeColor("horoscope", false);
+  }
+  if (zodiac) {
+    changeColor("zodiac", true);
+  } else {
+    changeColor("zodiac", false);
+  }
+
   return (
     <div className="main-site h-full bg-bgDark">
       <Header />
@@ -101,7 +135,7 @@ export default function Edit() {
           <Logout />
         </div>
         <ProfileCard user={user} age={age} />
-        <form className="bg-[#0E191F] rounded-md p-4 mb-4">
+        <form id="formEdit" className="bg-[#0E191F] rounded-md p-4 mb-4">
           <div className="flex justify-between items-center mb-4">
             <p className="font-bold">About</p>
             <button

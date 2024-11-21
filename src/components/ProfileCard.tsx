@@ -18,6 +18,7 @@ const ProfileCard: FC<ProfileCardProps> = ({ user, age }) => {
         width={100}
         height={100}
         style={{ height: "190px", width: "100%", objectFit: "cover" }}
+        priority
       />
       {user && (
         <div className="absolute p-4 bottom-0">
