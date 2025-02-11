@@ -12,7 +12,7 @@ const Logout = () => {
 
   const handleLogout = () => {
     removeCookie("token", { path: "/" });
-    router.push("/auth/login");
+    router.push("/login");
   };
 
   return (

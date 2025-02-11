@@ -1,16 +1,16 @@
 "use client";
 
-import BackRoute from "@/components/BackRoute";
-import Header from "@/components/Header";
+import BackRoute from "@/app/components/BackRoute";
+import Header from "@/app/components/Header";
 import Image from "next/image";
 import Link from "next/link";
 import { ReactNode, useEffect, useState } from "react";
-import { generateZodiac } from "@/utils/generateZodiac";
-import customFetch from "@/utils/useFetch";
+import { generateZodiac } from "@/app/utils/generateZodiac";
+import customFetch from "@/app/utils/useFetch";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/contexts/auth";
-import ProfileCard from "@/components/ProfileCard";
-import Logout from "@/components/Logout";
+import { useAuth } from "@/app/contexts/auth";
+import ProfileCard from "@/app/components/ProfileCard";
+import Logout from "@/app/components/Logout";
 
 export default function Edit() {
   const { token, user, setUser } = useAuth();
@@ -71,15 +71,15 @@ export default function Edit() {
       const res = await customFetch("/updateProfile", {
         method: "PUT",
         headers: {
-          "x-access-token": token,
+          "x-access-token": token
         },
         body: JSON.stringify({
           name: name,
           birthday: birthday,
           height: +heightP,
           weight: +weightP,
-          interest: [],
-        }),
+          interest: []
+        })
       });
       setUser(res.data);
       router.push("/");

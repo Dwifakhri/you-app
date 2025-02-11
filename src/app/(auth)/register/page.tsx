@@ -1,11 +1,11 @@
 "use client";
-import BackRoute from "@/components/BackRoute";
-import Header from "@/components/Header";
-import InputPassword from "@/components/InputPassword";
+import BackRoute from "@/app/components/BackRoute";
+import Header from "@/app/components/Header";
+import InputPassword from "@/app/components/InputPassword";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import customFetch from "@/utils/useFetch";
+import customFetch from "@/app/utils/useFetch";
 
 export default function Register() {
   const router = useRouter();
@@ -24,10 +24,10 @@ export default function Register() {
         body: JSON.stringify({
           email: email,
           username: username,
-          password: password,
-        }),
+          password: password
+        })
       });
-      router.push("/auth/login");
+      router.push("/login");
     } catch (error: any) {
       alert(error.message);
       setLoading(false);
@@ -46,7 +46,7 @@ export default function Register() {
     <div className="main-site min-h-full bg-base">
       <Header />
       <main>
-        <BackRoute link="/auth/login" />
+        <BackRoute link="/login" />
         <p className="text-xl font-bold mt-8 mb-6">Register</p>
         <form onSubmit={(e) => handleRegister(e)}>
           <input
@@ -83,9 +83,7 @@ export default function Register() {
         </form>
         <div className="text-center text-[13px] mt-10">
           Have an account?{" "}
-          <Link
-            className="link-golden link-golden-underline"
-            href="/auth/login">
+          <Link className="link-golden link-golden-underline" href="/login">
             Login here
           </Link>
         </div>

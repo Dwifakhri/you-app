@@ -11,10 +11,10 @@ export default async function middleware(req: NextRequest) {
   const auth = cookie.get("token")?.value;
 
   if (isProtectedRoute && !auth) {
-    return NextResponse.redirect(new URL("/auth/login", req.nextUrl));
+    return NextResponse.redirect(new URL("/login", req.nextUrl));
   }
 
-  if (auth && path === "/auth/login") {
+  if (auth && path === "/login") {
     return NextResponse.redirect(new URL("/", req.nextUrl));
   }
 
@@ -23,5 +23,5 @@ export default async function middleware(req: NextRequest) {
 
 // Routes Middleware should not run on
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|.*\\..*).*)"],
+  matcher: ["/((?!api|_next/static|_next/image|.*\\..*).*)"]
 };

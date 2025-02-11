@@ -1,12 +1,12 @@
 "use client";
 
-import BackRoute from "@/components/BackRoute";
-import Header from "@/components/Header";
+import BackRoute from "@/app/components/BackRoute";
+import Header from "@/app/components/Header";
 import Image from "next/image";
 import Link from "next/link";
-import { useAuth } from "@/contexts/auth";
-import ProfileCard from "@/components/ProfileCard";
-import Logout from "@/components/Logout";
+import { useAuth } from "@/app/contexts/auth";
+import ProfileCard from "@/app/components/ProfileCard";
+import Logout from "@/app/components/Logout";
 
 export default function Home() {
   const { user } = useAuth();

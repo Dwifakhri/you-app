@@ -1,12 +1,12 @@
 "use client";
 
-import BackRoute from "@/components/BackRoute";
-import Header from "@/components/Header";
-import customFetch from "@/utils/useFetch";
+import BackRoute from "@/app/components/BackRoute";
+import Header from "@/app/components/Header";
+import customFetch from "@/app/utils/useFetch";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useAuth } from "@/contexts/auth";
+import { useAuth } from "@/app/contexts/auth";
 
 export default function Interest() {
   const { user, token, setUser } = useAuth();
@@ -36,11 +36,11 @@ export default function Interest() {
       const res = await customFetch("/updateProfile", {
         method: "PUT",
         headers: {
-          "x-access-token": token,
+          "x-access-token": token
         },
         body: JSON.stringify({
-          interests: interests,
-        }),
+          interests: interests
+        })
       });
       setUser(res.data);
       router.push("/");

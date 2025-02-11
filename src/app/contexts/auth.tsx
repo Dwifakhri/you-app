@@ -2,7 +2,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useCookies } from "react-cookie";
-import customFetch from "@/utils/useFetch";
+import customFetch from "@/app/utils/useFetch";
 
 interface AuthContextProps {
   user: any;
@@ -13,7 +13,7 @@ interface AuthContextProps {
 const AuthContext = React.createContext<AuthContextProps>({
   user: {},
   setUser: () => {},
-  token: "",
+  token: ""
 });
 
 export const AuthProvider = ({ children }: any) => {
@@ -28,13 +28,13 @@ export const AuthProvider = ({ children }: any) => {
         try {
           const res = await customFetch("/getProfile", {
             headers: {
-              "x-access-token": cookie.token,
-            },
+              "x-access-token": cookie.token
+            }
           });
           setUser(res.data);
         } catch (error) {
           removeCookie("token");
-          router.push("/auth/login");
+          router.push("/login");
         }
       }
     }
@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }: any) => {
       value={{
         user: user,
         setUser: setUser,
-        token: cookie.token,
+        token: cookie.token
       }}>
       {children}
     </AuthContext.Provider>

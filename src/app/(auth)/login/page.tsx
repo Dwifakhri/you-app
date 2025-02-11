@@ -1,13 +1,13 @@
 "use client";
-import BackRoute from "@/components/BackRoute";
-import Header from "@/components/Header";
-import InputPassword from "@/components/InputPassword";
+import BackRoute from "@/app/components/BackRoute";
+import Header from "@/app/components/Header";
+import InputPassword from "@/app/components/InputPassword";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useCookies } from "react-cookie";
-import { useAuth } from "@/contexts/auth";
-import customFetch from "@/utils/useFetch";
+import { useAuth } from "@/app/contexts/auth";
+import customFetch from "@/app/utils/useFetch";
 
 export default function Login() {
   const router = useRouter();
@@ -26,8 +26,8 @@ export default function Login() {
         body: JSON.stringify({
           email: email,
           username: "",
-          password: password,
-        }),
+          password: password
+        })
       });
       await getProfile(res.access_token);
     } catch (error: any) {
@@ -40,14 +40,14 @@ export default function Login() {
     try {
       const res = await customFetch("/getProfile", {
         headers: {
-          "x-access-token": token,
-        },
+          "x-access-token": token
+        }
       });
       setUser(res.data);
       setCookie("token", token, {
         secure: true,
         sameSite: "strict",
-        path: "/",
+        path: "/"
       });
       router.push("/");
     } catch (error: any) {
